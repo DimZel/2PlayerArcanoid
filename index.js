@@ -6,6 +6,8 @@ var constants = require('./private/constants');
 var player = require('./private/player.js');
 var ball = require('./private/ball.js');
 
+const PORT = process.env.PORT || 5000
+
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
@@ -84,6 +86,6 @@ io.on('connection', function(socket){
 	});
 });
 
-http.listen(process.env.PORT || 5000, function(){
-	console.log(`Listening on ${ PORT }`));
+http.listen(PORT, function(){
+	console.log(`Listening on ${ PORT }`);
 });
