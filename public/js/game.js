@@ -95,14 +95,15 @@ var GameLayer = cc.Layer.extend({
 				if (this.getBat().minX !== 0) {
 					var req = {
 						id: this._id,
+						minX: this.getBat().minX,
+						maxX: this.getBat().maxX,
 						width: this.getBat().getBoundingBox().width,
 						height: this.getBat().getBoundingBox().height / 3
 					};
+					// console.log();
 					this._socket.emit('setColBox', req);
+					this.getBat().colBoxOnServer = TRUE;
 				}
-				this._socket.on('setColBox', function(id) {
-					_this.getBat(id).colBoxOnServer = TRUE;
-				});
 			}
 			if (this.getBat().state == kBatStateMoving) {
 				var req = {

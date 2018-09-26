@@ -34,8 +34,7 @@ io.on('connection', function(socket){
 	
 	socket.on('setColBox', function(msg) {
 		var curPlayer = players[msg.id - 1];
-		curPlayer.setColBox(msg.width, msg.height);
-		io.emit('setColBox', msg.id);
+		curPlayer.setColBox(msg);
 	});
 	
 	socket.on('keyMove', function(msg) {

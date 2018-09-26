@@ -36,11 +36,11 @@ var res = require('./resources');
 			this.state = state;
 		}
 		
-		setColBox(width, height) {
-			this.width = width;
-			this.height = height;
-			this.minX = width / 2;
-			this.maxX = this.maxX - this.width / 2;
+		setColBox(msg) {
+			this.width = msg.width;
+			this.height = msg.height;
+			this.minX = msg.minX;
+			this.maxX = msg.maxX;
 		}
 		
 		move(dt) {
