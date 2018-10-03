@@ -19,7 +19,7 @@ var players = [];
 var timerID;
 
 io.on('connection', function(socket){
-	console.log('a user connected');
+	console.log('a user connected ' + socket.id);
 	
 	socket.on('init', function(msg) {
 		var id = players.length + 1
@@ -68,11 +68,15 @@ io.on('connection', function(socket){
 				io.emit('moveBall', curBall.x, curBall.y);
 			} else {
 				clearInterval(timerID);
-				for (var i = 0, len = players.len; i < len; ++i) {
+				for (var i = 0, len = players.length; i < len; ++i) {
 					players[i].x = players[i].initX;
 				}
 				var curPlayer = players[fall - 1];
-				curBall.Stop(curPlayer);
+				if (curPlayer) {
+					curBall.Stop(curPlayer);
+				} else {
+					curBall.Stop(players[0]);
+				}
 				io.emit('stop', curBall, players);
 			}
 		}, constants.kBallDeltaTime * 1000);

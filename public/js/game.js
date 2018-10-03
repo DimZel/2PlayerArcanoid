@@ -144,14 +144,14 @@ var GameLayer = cc.Layer.extend({
 		tar.getBat().speedX = 0;
 	},
 	
-	ReEnableAfterFall: function() {
+	/*ReEnableAfterFall: function() {
 		this._gameStarted = FALSE;
 		this.getBat().x = this._middleX;
 		this._ball.state = kBallStateStopped;
 		this._ball.x = this.getBat().x;
 		this._ball.y = this.getBat().y + kBallStartY;
 		this._ball.processCollision = false;
-	}
+	}*/
 });
 
 GameLayer.scene = function() {
